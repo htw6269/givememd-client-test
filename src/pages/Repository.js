@@ -12,7 +12,6 @@ const Repository = ({repository}) => {
         <>
             <tr>
                 <td><a href={detailUrl}>{repository.name}</a></td>
-                <td>{repository.url}</td>
             </tr>
         </>
     )

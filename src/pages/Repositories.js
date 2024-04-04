@@ -23,8 +23,7 @@ const Repositories = () =>{
             <table>
                 <thead>
                     <tr>
-                        <th>리포지토리명</th>
-                        <th>url</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
