@@ -8,7 +8,13 @@ const GithubButton  = (props) => {
     }
     return (
         <div >
-            <img src="login.png" alt="깃허브 로그인" onClick={handleLogin} style={{cursor: 'pointer',marginBottom: '100px'}}/>
+            <img src="login2.png" alt="깃허브 로그인" onClick={handleLogin}     
+            style={{
+                    cursor: 'pointer',
+                    width: '480px',
+                    height: '85px',
+                    marginBottom: '100px'
+                }}/>
         </div>
     );
 };

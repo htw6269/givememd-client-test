@@ -22,7 +22,12 @@ function App() {
   return (
       <BrowserRouter>
         <Routes>
+<<<<<<< HEAD
           <Route path="/home" element={<Home/>}></Route>
+=======
+          <Route path="/" element={<Home/>}></Route>
+          <Route path="/result" element={<Result/>}></Route>
+>>>>>>> hata
           <Route path="/redirect" element={<GithubRedirect/>}></Route>
           <Route path="/mypage" element={<MyPage/>}></Route>
           <Route path="/repositories" element={<Repositories/>}></Route>
