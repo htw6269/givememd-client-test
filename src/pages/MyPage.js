@@ -21,7 +21,7 @@ const MyPage = () =>{
         localStorage.clear("accessToken");
         localStorage.clear("refreshToken");
         localStorage.clear("githubAccessToken");
-        window.location.href = "/home";
+        window.location.href = "/";
     }
 
     useEffect(()=>{

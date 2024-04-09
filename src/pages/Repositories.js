@@ -11,7 +11,7 @@ const Repositories = () =>{
         const requestBody = {
             "accessToken":accessToken
         }
-        Axios.post("http://localhost:8080/api/v1/github/repositories",requestBody)
+        Axios.get("http://3.39.11.243:8080/api/readme/repos",requestBody)
             .then((res)=>{
                 console.log(res);
                 setData(res.data.result.list);
