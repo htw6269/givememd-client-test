@@ -1,12 +1,11 @@
 import './App.css';
-import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import GithubRedirect from './pages/GithubRedirect';
 import MyPage from './pages/MyPage';
 import Repositories from './pages/Repositories';
 import RepositoryDetail from './pages/RepositoryDetail';
-import Result from './pages/Result';
+import Result from './pages/Result'
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -19,11 +18,12 @@ function App() {
     }else{
       setLogin(false);
     }
-  },[]);
+},[]);
 
   return (
       <BrowserRouter>
         <Routes>
+
           <Route path="/" element={<Home/>}></Route>
           <Route path="/result" element={<Result/>}></Route>
           <Route path="/redirect" element={<GithubRedirect/>}></Route>
