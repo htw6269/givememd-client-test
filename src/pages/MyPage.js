@@ -36,17 +36,18 @@ const MyPage = () =>{
                 Logout
             </button>
         </div>
-        <div style={{ }}>
-         <span style={{position: 'absolute', left:'300px', fontSize: '40px', textDecoration: 'underline #E96D14', textUnderlinePosition: 'under', fontWeight: 'bold', fontStyle: 'italic' }}>Repositories</span>
-         <span style={{position: 'absolute', right:'300px', fontSize: '40px', textDecoration: 'underline #E96D14', textUnderlinePosition: 'under', fontWeight: 'bold', fontStyle: 'italic' }}>History</span>
+        <div style={{ display: 'flex', alignItems: 'center', margin: '0 300px', position: 'relative', height: '60px' }}>
+            <span style={{position: 'absolute', left: 0, fontSize: '40px', textDecoration: 'underline #E96D14', textUnderlinePosition: 'under', fontWeight: 'bold', fontStyle: 'italic' }}>Repositories</span>
+            <span style={{position: 'absolute', right: 0, fontSize: '40px', textDecoration: 'underline #E96D14', textUnderlinePosition: 'under', fontWeight: 'bold', fontStyle: 'italic' }}>History</span>
         </div>
-        <div>
-            <Repositories></Repositories>
+
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Repositories />
             <div style={{ position: 'absolute', top: '250px', bottom: '50px', left: '50%', width: '1px', background: 'black' }}></div>
-            <History></History>
+            <History />
         </div>
         </>
     )
-}
+}          
 
 export default MyPage;

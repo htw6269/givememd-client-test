@@ -9,10 +9,11 @@ const GithubRedirect = () =>{
         console.log(code);
         axios.get("http://3.39.11.243:8080/api/auth/login?code="+code, { withCredentials: true })
             .then((res)=>{
-                console.log(res);
+                console.log(res.data.accessToken);
+                console.log(res.data);
                 //localStorage.setItem("githubAccessToken",res.data.result.githubAccessToken);
-                //localStorage.setItem("accessToken",res.data.result.accessToken);
-                //localStorage.setItem("refreshToken",res.data.result.refreshToken);
+                localStorage.setItem("accessToken",res.data.accessToken);
+                localStorage.setItem("refreshToken",res.data.refreshToken);
                 window.location.href = "/mypage";
             })
     },[])
