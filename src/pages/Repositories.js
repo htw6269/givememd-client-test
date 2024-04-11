@@ -14,13 +14,14 @@ const Repositories = () =>{
         Axios.get("http://3.39.11.243:8080/api/readme/repos",requestBody)
             .then((res)=>{
                 console.log(res);
-                setData(res.data.result.list);
+                setData(res.data.repositories);
             })
     },[])
     
     return (
         <>
-            <table>
+            <div style={{ textAlign: 'center' }}>
+            <table style={{  display: 'flex', alignItems: 'center', margin: '0 300px', position: 'relative', height: '450px'  }}>
                 <thead>
                     <tr>
                         <th></th>
@@ -31,8 +32,8 @@ const Repositories = () =>{
                     <Repository repository={repository}/>
                 )}
                 </tbody>
-                
             </table>
+            </div>
         </>
     )
 }
