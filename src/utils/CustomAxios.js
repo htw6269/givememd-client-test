@@ -24,11 +24,11 @@ Axios.interceptors.response.use(
     console.log(error);
     const { config, response: { status } } = error;
    
-    if (config.url === "/api/auth/v1/reissue" || (status === 401&&error.response.data.message==="인증이 실패하였습니다." ) || config.sent) {
+    if (config.url === "/api/auth/reissue" || (status === 401&&error.response.data.message==="인증이 실패하였습니다." ) || config.sent) {
       localStorage.removeItem('accessToken');
       localStorage.removeItem('refreshToken');
       localStorage.removeItem('githubAccessToken');
-      window.location.href = "/home";
+      window.location.href = "/";
       return Promise.reject(error);
     }
     config.sent = true;
@@ -42,31 +42,33 @@ Axios.interceptors.response.use(
     return Axios(config);
  }
 );
-
-const getRefreshToken = async() => {
+const getRefreshToken = async () => {
   const refreshToken = localStorage.getItem("refreshToken");
- 
-  await Axios.post("http://localhost:8080/api/v1/auth/reissue",{refreshToken})
-    .then((res) => {
-      console.log(res);
-      const response = res.data;
-      const newAccessToken = response.result.accessToken;
-      const newRefreshToken = response.result.refreshToken;
-      localStorage.setItem("accessToken", newAccessToken);
-      localStorage.setItem("refreshToken", newRefreshToken);
-    })
-    .catch((e) => {
-      console.log(e);
-      //const dispatch = useDispatch();
-      //const navigate = useNavigate();
-      console.log("Token Reissue Fail : " + e);
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
-      localStorage.removeItem('githubAccessToken');
-      //dispatch(remove_userInfo());
-      window.location.href = "/home";
-    });
-}
+
+  const requestBody = {
+    accessToken: localStorage.getItem("accessToken"),
+    refreshToken: refreshToken
+  };
+
+  try {
+    const response = await Axios.post("http://3.39.11.243:8080/api/auth/reissue", requestBody);
+    console.log(response);
+    
+    const newAccessToken = response.data.result.accessToken;
+    const newRefreshToken = response.data.result.refreshToken;
+
+    localStorage.setItem("accessToken", newAccessToken);
+    localStorage.setItem("refreshToken", newRefreshToken);
+  } catch (error) {
+    console.log("Token Reissue Fail : ", error);
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('githubAccessToken');
+    // 에러 처리 또는 리디렉션 등 필요한 작업 수행
+    window.location.href = "/";
+
+  }
+};
 
 
 export const refreshTokenAxios = axios.create({
