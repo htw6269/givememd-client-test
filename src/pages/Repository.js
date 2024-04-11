@@ -5,7 +5,7 @@
         const detailUrl = `/repository/${repository.name}`;
 
         useEffect(()=>{
-            console.log(repository);
+           //console.log(repository);
         },[])
 
         return (

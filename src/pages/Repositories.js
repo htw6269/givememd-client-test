@@ -21,7 +21,7 @@ const Repositories = () =>{
     return (
         <>
             <div style={{ textAlign: 'center' }}>
-            <table style={{  display: 'flex', alignItems: 'center', margin: '0 300px', position: 'relative', height: '450px'  }}>
+            <table style={{  display: 'flex', alignItems: 'center', margin: '0 300px', position: 'relative', height: '750px'  }}>
                 <thead>
                     <tr>
                         <th></th>
