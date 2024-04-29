@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { axios } from 'axios';
+import axios from 'axios';
 import MDEditor from '@uiw/react-md-editor';
 import Modal from './Modal';
 import '../css/giveme.css';
@@ -48,14 +48,21 @@ function Readme() {
     setMarkdown(newMarkdown);
   };
   const commit = async () => {
+    const userToken = localStorage.getItem('refreshToken');
+
     try {
         const requestBody = {
             //토큰 있어야함.
-            repositoryName: repositoryName,
-            commitMessage: markdown
+            name: repositoryName,
+            content: markdown
         };
+        const response = await axios.post('http://3.39.11.243:8080/api/readme/commit', requestBody, {
+          headers: {
+            Authorization: `Bearer ${userToken}`
+          }
+        });
 
-        const response = await axios.post('http://3.39.11.243:8080/api/readme/commit', requestBody);
+        //const response = await axios.post('http://3.39.11.243:8080/api/readme/commit', requestBody);
         console.log(response.data); // 서버로부터 받은 응답 데이터 처리
 
         return response.data; // 선택적으로 응답 데이터 반환
@@ -65,14 +72,18 @@ function Readme() {
     }
 };
 const save = async () => {
+  const userToken = localStorage.getItem('refreshToken');
   try {
       const requestBody = {
-          //토큰 있어야함.
-          repositoryName: repositoryName,
-          commitMessage: markdown
+        name: repositoryName,
+        content: markdown
       };
+      const response = await axios.post('http://3.39.11.243:8080/api/readme/save', requestBody, {
+        headers: {
+          Authorization: `Bearer ${userToken}`
+        }
+      });
 
-      const response = await axios.post('http://3.39.11.243:8080/api/readme/save', requestBody);
       console.log(response.data); // 서버로부터 받은 응답 데이터 처리
 
       return response.data; // 선택적으로 응답 데이터 반환
@@ -94,8 +105,8 @@ const save = async () => {
       </div>
       <div className='grid_div'>
         <div className='add_box' onClick={add}>Add</div>
-        <div className='save_box'>Save</div>
-        <div className='commit_box'>Commit to repository</div>
+        <div className='save_box' onClick={save}>Save</div>
+        <div className='commit_box'onClick={commit}>Commit to repository</div>
       </div>
       <Modal closeModal={closeModal} isOpen={isModalOpen} addTeamInfoToMarkdown={addTeamInfoToMarkdown}></Modal>
     </>
