@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 const Repository = ({ repository, onClick }) => {
-    const detailUrl = `/repository/${repository.name}`;
+    const detailUrl = `/result`;
 
     useEffect(() => {
         //console.log(repository);
