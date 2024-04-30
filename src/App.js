@@ -6,6 +6,7 @@ import MyPage from './pages/MyPage';
 import Repositories from './pages/Repositories';
 import RepositoryDetail from './pages/RepositoryDetail';
 import Result from './pages/Result'
+import Edit from './pages/Edit'
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -23,12 +24,12 @@ function App() {
   return (
       <BrowserRouter>
         <Routes>
-
           <Route path="/" element={<Home/>}></Route>
           <Route path="/result" element={<Result/>}></Route>
           <Route path="/redirect" element={<GithubRedirect/>}></Route>
           <Route path="/mypage" element={<MyPage/>}></Route>
           <Route path="/repositories" element={<Repositories/>}></Route>
+          <Route path ="/edit" element={<Edit/>}></Route>
           <Route path="/repository/:name" element={<RepositoryDetail/>}></Route>
         </Routes>
       </BrowserRouter>

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
-const Repository = ({readmeId,repository, onClick }) => {
-    const detailUrl = `/result`;
+const Histories = ({readmeId,repository, onClick }) => {
+    const detailUrl = `/edit`;
     console.log(readmeId);
 
     useEffect(() => {
@@ -20,4 +20,4 @@ const Repository = ({readmeId,repository, onClick }) => {
     )
 }
 
-export default Repository;
+export default Histories;

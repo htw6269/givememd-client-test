@@ -3,12 +3,16 @@
 import { useEffect, useState } from "react";
 import Repository from "./Repository";
 import { Axios } from "../utils/CustomAxios";
+import Histories from "./Histories";
 
 const History = () => {
     const [data,setData] = useState([]);
     const [selectedRepository, setSelectedRepository] = useState(null); // 클릭한 리포지토리 이름을 저장할 state
-    const handleRepositoryClick = (repositoryName) => {
+    //const [readmeId,setReadmeId] = useState(null);
+    const handleRepositoryClick = (repositoryName,readmeId) => {
         setSelectedRepository(repositoryName); // 클릭한 리포지토리 이름을 state에 저장
+        localStorage.setItem("readmeId",readmeId);
+        console.log(readmeId);
     };
     localStorage.setItem("repository",selectedRepository);
     console.log(selectedRepository);
@@ -35,7 +39,7 @@ const History = () => {
                         </thead>
                         <tbody>
                             {data.map((repository) =>
-                                <Repository key={repository.id} repository={repository} onClick={handleRepositoryClick}/>
+                                <Histories key={repository.id} readmeId={repository.readmeId} repository={repository} onClick={handleRepositoryClick}/>
                             )}
                         </tbody>
                     </table>
