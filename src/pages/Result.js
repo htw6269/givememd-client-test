@@ -13,7 +13,7 @@ function Readme() {
   
   useEffect(() => {
     const saveCommit = async () => {
-      const userToken = localStorage.getItem('refreshToken');
+      const userToken = localStorage.getItem('accessToken');
       const requestBody={
         name : repositoryName
       }
