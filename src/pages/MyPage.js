@@ -39,9 +39,9 @@ const MyPage = () =>{
             <span style={{position: 'absolute', right: 0, fontSize: '40px', textDecoration: 'underline #E96D14', textUnderlinePosition: 'under', fontWeight: 'bold', fontStyle: 'italic' }}>History</span>
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative' }}>
             <Repositories />
-            <div style={{ position: 'absolute', top: '250px', bottom: '50px', left: '50%', width: '1px', background: 'black' }}></div>
+            <div class="vertical-line"></div>
             <History />
         </div>
         </>

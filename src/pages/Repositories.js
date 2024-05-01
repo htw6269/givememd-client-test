@@ -22,11 +22,12 @@ const Repositories = () => {
                 setData(res.data.repositories);
             })
     },[])
+
         return (
             <>
                 <div style={{ textAlign: 'center' }}>
                     {/* Repository 컴포넌트에 클릭 이벤트 핸들러를 전달 */}
-                    <table style={{ display: 'flex', alignItems: 'center', margin: '0 300px', position: 'relative', height: '750px' }}>
+                    <table style={{ display: 'flex', alignItems: 'center', margin: '0 270px', position: 'relative', borderCollapse: 'collapse' }}>
                         <thead>
                             <tr>
                                 <th></th>
@@ -34,7 +35,11 @@ const Repositories = () => {
                         </thead>
                         <tbody>
                             {data.map((repository) =>
-                                <Repository key={repository.id} repository={repository} onClick={handleRepositoryClick}/>
+                                <tr key={repository.id} style={{ padding: '50px' }}>
+                                    <td>
+                                        <Repository repository={repository} onClick={handleRepositoryClick} />
+                                    </td>
+                                </tr>
                             )}
                         </tbody>
                     </table>
@@ -43,5 +48,6 @@ const Repositories = () => {
             </>
         );
     }
+    
 
     export default Repositories;
