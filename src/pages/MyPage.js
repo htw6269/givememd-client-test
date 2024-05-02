@@ -3,27 +3,25 @@ import { Axios } from "../utils/CustomAxios";
 import Repositories from "./Repositories";
 import History from "./History";
 const MyPage = () =>{
-    /**
-    const handleButton = ()=>{
-        window.location.href = "/repositories";
-    }
-    */
-    const logout = async()=>{
-        const accessToken = localStorage.getItem("githubAccessToken")
-        await Axios.post("http://localhost:8080/api/v1/auth/logout",{accessToken})
-            .then((res)=>{
-                console.log(res);
-            })
-            .catch(error=>{
-                console.log(error);
-            })
-
-        localStorage.clear("accessToken");
-        localStorage.clear("refreshToken");
-        localStorage.clear("githubAccessToken");
-        window.location.href = "/";
-    }
-
+    const logout = async () => {
+        try {
+            const accessToken = localStorage.getItem("githubAccessToken");
+            await Axios.delete("http://3.39.11.243:8080/api/auth", {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            });
+            console.log("Logout successful");
+            // Clear tokens from local storage
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("refreshToken");
+            localStorage.removeItem("githubAccessToken");
+            // Redirect to login page or any other desired location
+            window.location.href = "/";
+        } catch (error) {
+            console.log("Logout failed:", error);
+        }
+    };
     useEffect(()=>{
         console.log("hello");
     },[]);
@@ -41,9 +39,9 @@ const MyPage = () =>{
             <span style={{position: 'absolute', right: 0, fontSize: '40px', textDecoration: 'underline #E96D14', textUnderlinePosition: 'under', fontWeight: 'bold', fontStyle: 'italic' }}>History</span>
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative' }}>
             <Repositories />
-            <div style={{ position: 'absolute', top: '250px', bottom: '50px', left: '50%', width: '1px', background: 'black' }}></div>
+            <div class="vertical-line"></div>
             <History />
         </div>
         </>
