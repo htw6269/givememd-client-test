@@ -18,7 +18,7 @@ function Readme() {
         name : repositoryName
       }
       try {
-        const response = await axios.post(`http://3.39.11.243:8080/api/readme`,requestBody, {
+        const response = await axios.post('http://3.39.11.243:8080/api/readme',requestBody, {
           headers: {
             Authorization: `Bearer ${userToken}`
           }
@@ -82,7 +82,28 @@ function Readme() {
   };
 
   const commit = async () => {
-    // 커밋 관련 코드
+    const userToken = localStorage.getItem('refreshToken');
+
+    try {
+      const requestBody = {
+        //토큰 있어야함.
+        repositoryName: repositoryName,
+        content: markdown
+      };
+      const response = await axios.post('http://3.39.11.243:8080/api/readme/commit', requestBody, {
+        headers: {
+          Authorization: `Bearer ${userToken}`
+        }
+      });
+
+      console.log(response); // 서버로부터 받은 응답 데이터 처리
+      alert("커밋완료");
+
+      return response.data; // 선택적으로 응답 데이터 반환
+    } catch (error) {
+      console.error('Error while posting commit:', error);
+      throw error; // 예외 처리
+    }
   };
 
   const save = async () => {
