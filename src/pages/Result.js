@@ -10,6 +10,8 @@ function Readme() {
   const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
   const [isModalOpen, setIsModalOpen] = useState(false);
   let repositoryName = localStorage.getItem("repository");
+  const readmeId = localStorage.getItem("readmeId");
+
   
   useEffect(() => {
     const saveCommit = async () => {
@@ -107,8 +109,33 @@ function Readme() {
   };
 
   const save = async () => {
-    // 저장 관련 코드
-  };
+    const userToken = localStorage.getItem('accessToken');
+    const requestBody={
+      name : repositoryName,
+      content : markdown
+    };
+    try {
+        const response = await axios.post(`http://3.39.11.243:8080/api/readme/save`, requestBody,{
+            headers: {
+                Authorization: `Bearer ${userToken}`
+            }
+        });
+
+        console.log(response); // 서버로부터 받은 응답 데이터 처리
+        alert("저장 완료");
+        return response.data; // 선택적으로 응답 데이터 반환
+    } catch (error) {
+        if (error.response) {
+            console.error("서버 응답 오류:", error.response.data);
+        } else if (error.request) {
+            console.error("서버 요청 오류:", error.request);
+        } else {
+            console.error("오류 메시지:", error.message);
+        }
+        alert("이미 저장되었습니다."); // 에러 발생 시 alert만 띄우기
+         // 예외 처리
+    }
+};
 
   return (
     <>

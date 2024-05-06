@@ -13,7 +13,7 @@ function Edit() {
   console.log(repositoryName);
   useEffect(() => {
     const saveCommit = async () => {
-        const userToken = localStorage.getItem('refreshToken');
+        const userToken = localStorage.getItem('accessToken');
         try {
           const response = await axios.get(`http://3.39.11.243:8080/api/readme/${readmeId}`, {
               headers: {
@@ -78,7 +78,7 @@ function Edit() {
     setMarkdown(newMarkdown);
   };
   const commit = async () => {
-    const userToken = localStorage.getItem('refreshToken');
+    const userToken = localStorage.getItem('accessToken');
 
     try {
       const requestBody = {
@@ -102,7 +102,7 @@ function Edit() {
     }
   };
   const edit = async () => {
-    const userToken = localStorage.getItem('refreshToken');
+    const userToken = localStorage.getItem('accessToken');
     const requestBody={
       readmeId : readmeId,
       content : markdown
@@ -125,7 +125,7 @@ function Edit() {
         } else {
             console.error("오류 메시지:", error.message);
         }
-        alert("이미 저장되었습니다."); // 에러 발생 시 alert만 띄우기
+        alert("이미 수정되었습니다."); // 에러 발생 시 alert만 띄우기
          // 예외 처리
     }
 };

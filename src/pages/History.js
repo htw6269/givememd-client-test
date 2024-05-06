@@ -18,12 +18,13 @@ const History = () => {
     console.log(selectedRepository);
     useEffect(()=>{
         const accessToken = localStorage.getItem("githubAccessToken");
-        const requestBody = {
-            "accessToken":accessToken
-        }
-        Axios.get("http://3.39.11.243:8080/api/readme/list",requestBody)
+        Axios.get("http://3.39.11.243:8080/api/readme/list",{
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        })
             .then((res)=>{
-                console.log(res);
+                console.log("history:",res);
                 setData(res.data.repos);
             })
     },[])
