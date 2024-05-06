@@ -10,9 +10,10 @@
 }
 .grid_div{
   display: grid;
-  grid-template-columns: 1600px 200px 380px;
+  grid-template-columns: 2.5fr 0.5fr 1fr;
   margin-top: 40px;
   margin-left: 5%;
+  margin-bottom: 100px;
 }
 .add_box{
   background-color: #E96D14;
@@ -146,4 +147,24 @@
   left: 50%;
   width: 1px;
   background: black;
+}
+
+.loading_div {
+  position: fixed;
+  top: 20%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.loading_text {
+  font-size: 28px;
+  margin-bottom: 100px;
+}
+
+.loading {
+  position: fixed;
+  left: 10%;
+  
+  
 }

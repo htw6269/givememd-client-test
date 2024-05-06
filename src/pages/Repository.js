@@ -17,7 +17,7 @@ const Repository = ({readmeId,repository, onClick }) => {
                 <a href={detailUrl} style={{ fontSize: '24px', fontFamily: 'Arial, sans-serif', fontWeight: 'bold', textDecoration: 'none', color: '#333', lineHeight: '2.0', display: 'block' }} onClick={() => onClick(repository.name, readmeId)}>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <FontAwesomeIcon icon={faFolder} style={{ marginRight: '15px', marginLeft:'30px', color: '#E96D14' }} /> {/* 폴더 아이콘 */}
-                        <span style={{ fontSize: '18px', fontWeight: 'bold', marginRight:'25px'}}>{repository.name}</span> {/* 리포지토리 이름 */}
+                        <span style={{ fontSize: '18px', fontWeight: 'bold', marginRight:'20px'}}>{repository.name}</span> {/* 리포지토리 이름 */}
                     </div>
                 </a>
             </td>

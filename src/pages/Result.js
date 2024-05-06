@@ -84,7 +84,7 @@ function Readme() {
   };
 
   const commit = async () => {
-    const userToken = localStorage.getItem('refreshToken');
+    const userToken = localStorage.getItem('accessToken');
 
     try {
       const requestBody = {
@@ -100,6 +100,8 @@ function Readme() {
 
       console.log(response); // 서버로부터 받은 응답 데이터 처리
       alert("커밋완료");
+
+      window.location.href = "/mypage"; // 홈 페이지로 이동
 
       return response.data; // 선택적으로 응답 데이터 반환
     } catch (error) {
